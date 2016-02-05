@@ -6,44 +6,46 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<title>
-			국민대학교 정보 공유실에 오신것을 환영합니다.
-		</title>
+		<?php
+			require("head.php");
+		 ?>
 	</head>
 	<body>
-		<header>
-			<h1><a href="index.php">국민대학교 정보 공유실</a></h1>
-		</header>
-		<nav>
-			<ul>
-				<?php
-					while($row = mysqli_fetch_assoc($result)){
-						echo '<li><a href="/first/index.php?id='.$row['id'].'">'
-						.htmlspecialchars($row['title']).'</a></li>';
-					}
-				 ?>
-			</ul>
-		</nav>
-		<article class="">
-			<?php
-				if(empty($_GET['id'])){
-					echo "국민대학교 정보 공유실에 오신것을 환영합니다";
-				} else {
-					$sql = "SELECT * FROM freeboard";
-					$result = mysqli_query($conn, $sql);
-					echo "순번  제목  작성자 작성시간\n";
-					echo "<br />";
-					while($row = mysqli_fetch_assoc($result)){
-						echo "<ul>";
-						echo '<li><a href="contentpage.php?id='.$row['id'].'">'.htmlspecialchars($row['id']) ,htmlspecialchars($row['title'])
-	          ,htmlspecialchars($row['author']) ,htmlspecialchars($row['created']).'</a></li>'."\n";
-						echo "</ul>";
-						echo "<br />";
-					}
-				}
-			 ?>
-		</article>
-		<a href="write.php">글쓰기</a>
+		<div class="container-fluid">
+			<header class="jumbotron text-center">
+				<h1><a href="index.php">국민대학교 정보 공유실</a></h1>
+			</header>
+			<div class="row">
+				<nav class="col-md-2">
+					<ul>
+						<?php
+							while($row = mysqli_fetch_assoc($result)){
+								echo '<li><a href="/first/index.php?id='.$row['id'].'">'
+								.htmlspecialchars($row['title']).'</a></li>';
+							}
+						 ?>
+					</ul>
+				</nav>
+				<div class="col-md-10">
+					<script src="/script.js"></script>
+					<article>
+						<?php
+							require("article.php");
+						 ?>
+					</article>
+					<hr />
+					<?php
+						if( !empty($_GET['id']) && ($_GET['id']==='1'|| $_GET['id']==='2')){
+							echo '<a href="write.php?id='.$_GET['id'].'">'."글쓰기".'</a>';
+						}
+					 ?>
+				</div>
+
+			</div>
+			 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <!-- Include all compiled plugins (below), or include individual files as needed -->
+	    <script src="js/bootstrap.min.js"></script>
+		</div>
 	</body>
 </html>
