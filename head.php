@@ -6,6 +6,6 @@
   <title>
     국민대학교 정보 공유실에 오신것을 환영합니다.
   </title>
-  <link rel="stylesheet" type="text/css"href="/style.css">
+  <link rel="stylesheet" type="text/css"href="/first/style.css">
   <link href="/bootstrap-3.3.4-dist/css/bootstrap.min.css" rel="stylesheet">';
   ?>

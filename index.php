@@ -11,32 +11,29 @@
 		 ?>
 	</head>
 	<body>
-		<div class="container-fluid">
+		<div class="container">
 			<header class="jumbotron text-center">
 				<h1><a href="index.php">국민대학교 정보 공유실</a></h1>
 			</header>
 			<div class="row">
-				<nav class="col-md-2">
-					<ul>
-						<?php
-							while($row = mysqli_fetch_assoc($result)){
-								echo '<li><a href="/first/index.php?id='.$row['id'].'">'
-								.htmlspecialchars($row['title']).'</a></li>';
-							}
-						 ?>
-					</ul>
-				</nav>
+				<?php
+					require("nav.php");
+				 ?>
 				<div class="col-md-10">
 					<script src="/script.js"></script>
 					<article>
 						<?php
+						  $boardName = array("1"=>"자유게시판", "2"=>"과목별 자료공유", "3"=>"실시간 채팅방");
+  						$id = htmlspecialchars($_GET['id']);
+							if(!empty($id)){
+								echo "<h4>".$boardName[$id]."</h4>";
+							}
 							require("article.php");
 						 ?>
 					</article>
-					<hr />
 					<?php
 						if( !empty($_GET['id']) && ($_GET['id']==='1'|| $_GET['id']==='2')){
-							echo '<a href="write.php?id='.$_GET['id'].'">'."글쓰기".'</a>';
+							echo '<a href="write.php?id='.$_GET['id'].'" class="btn btn-success">'."글쓰기".'</a>';
 						}
 					 ?>
 				</div>
