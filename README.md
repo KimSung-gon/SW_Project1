@@ -18,8 +18,7 @@ University Data Community(UDC)
 
 목표
 - 자유게시판을 통한 다양한 질문과 답변을 할 수 있다,
-- 자료를 업로드, 다운로드하여 주고 받을 수 있다.
-- 안드로이드나 컴퓨터를 통하여 웹으로 접속할 수 있다.
+- ddns를 통하여 컴퓨터를 통하여 웹으로 접속할 수 있다.
 
 Tool : atom, bootstrap, bitnami(mysql,apache web server)
 
